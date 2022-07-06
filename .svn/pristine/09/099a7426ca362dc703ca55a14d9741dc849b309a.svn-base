@@ -1,0 +1,9 @@
+<!-- Name -->
+<div class="form-group <?php echo e($errors->has('rate_of_depreciation') ? ' has-error' : ''); ?>">
+    <label for="rate_of_depreciation" class="col-md-3 control-label"><?php echo e($translated_name); ?></label>
+    <div class="col-md-7 col-sm-12<?php echo e((\App\Helpers\Helper::checkIfRequired($item, 'rate_of_depreciation')) ? ' required' : ''); ?>">
+        <input class="form-control" type="text" name="rate_of_depreciation" id="rate_of_depreciation" value="<?php echo e(Input::old('rate_of_depreciation', $item->rate_of_depreciation)); ?>" />
+        <?php echo $errors->first('rate_of_depreciation', '<span class="alert-msg"><i class="fa fa-times"></i> :message</span>'); ?>
+
+    </div>
+</div>

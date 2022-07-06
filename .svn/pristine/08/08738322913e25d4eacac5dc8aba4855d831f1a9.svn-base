@@ -1,0 +1,53 @@
+<?php $__env->startSection('inputFields'); ?>
+
+<div class="form-group <?php echo e($errors->has('costcode') ? ' has-error' : ''); ?>">
+    <label for="costcode" class="col-md-3 control-label">
+        <?php echo e(trans('admin/costcentres/general.costcode')); ?>
+
+    </label>
+    <div class="col-md-8<?php echo e((\App\Helpers\Helper::checkIfRequired($item, 'costcode')) ? ' required' : ''); ?>">
+        <div class="col-md-8" style="padding-left:0px">
+            <input class="form-control" type="text" name="costcode" id="costcode" value="<?php echo e(Input::old('costcode', $item->costcode)); ?>" style="width: 280px;" />
+        </div>
+    </div>
+    <?php echo $errors->first('costcode', '<span class="alert-msg"><i class="fa fa-times"></i> :message</span>'); ?>
+
+</div>
+<!-- <div class="form-group <?php echo e($errors->has('dept_id') ? ' has-error' : ''); ?>">
+    <label for="dept_id" class="col-md-3 control-label">
+        <?php echo e(trans('admin/costcentres/general.dept_id')); ?>
+
+    </label>
+    <div class="col-md-8<?php echo e((\App\Helpers\Helper::checkIfRequired($item, 'dept_id')) ? ' required' : ''); ?>">
+        <div class="col-md-8" style="padding-left:0px">
+            <input class="form-control" type="text" name="dept_id" id="dept_id" value="<?php echo e(Input::old('dept_id', $item->dept_id)); ?>" style="width: 280px;" />
+        </div>
+    </div>
+    <?php echo $errors->first('dept_id', '<span class="alert-msg"><i class="fa fa-times"></i> :message</span>'); ?>
+
+</div> -->
+
+<!--  Department -->
+              <?php echo $__env->make('partials.forms.edit.department-select', ['translated_name' => trans('general.department'), 'fieldname' => 'dept_id'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="form-group <?php echo e($errors->has('note') ? ' has-error' : ''); ?>">
+    <label for="note" class="col-md-3 control-label">
+        <?php echo e(trans('admin/costcentres/general.note')); ?>
+
+    </label>
+    <div class="col-md-8<?php echo e((\App\Helpers\Helper::checkIfRequired($item, 'note')) ? ' required' : ''); ?>">
+        <div class="col-md-8" style="padding-left:0px">
+            <input class="form-control" type="text" name="note" id="note" value="<?php echo e(Input::old('note', $item->note)); ?>" style="width: 280px;" />
+        </div>
+    </div>
+    <?php echo $errors->first('note', '<span class="alert-msg"><i class="fa fa-times"></i> :message</span>'); ?>
+
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts/edit-form', [
+    'createText' => trans('admin/costcentres/general.create') ,
+    'updateText' => trans('admin/costcentres/general.update'),
+    'helpTitle' => trans('admin/costcentres/general.about_asset_depreciations'),
+    'helpText' => trans('admin/depreciations/general.about_depreciations'),
+    'formAction' => ($item) ? route('costcentres.update', ['costcentre' => $item->id]) : route('costcentres.store'),
+], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

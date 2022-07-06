@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Policies;
+
+use App\Policies\CheckoutablePermissionsPolicy;
+
+class BuildingPolicy extends CheckoutablePermissionsPolicy
+{
+    protected function columnName()
+    {
+        return 'buildings';
+    }
+}

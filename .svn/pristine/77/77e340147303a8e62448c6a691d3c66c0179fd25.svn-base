@@ -1,0 +1,9 @@
+<!-- Improvement -->
+<div class="form-group <?php echo e($errors->has('improvement') ? ' has-error' : ''); ?>">
+    <label for="improvement" class="col-md-3 control-label"><?php echo e($translated_name); ?></label>
+    <div class="col-md-7 col-sm-12<?php echo e((\App\Helpers\Helper::checkIfRequired($item, 'improvement')) ? ' required' : ''); ?>">
+        <input class="form-control" type="text" name="improvement" id="improvement" value="<?php echo e(Input::old('improvement', $item->improvement)); ?>" />
+        <?php echo $errors->first('improvement', '<span class="alert-msg"><i class="fa fa-times"></i> :message</span>'); ?>
+
+    </div>
+</div>

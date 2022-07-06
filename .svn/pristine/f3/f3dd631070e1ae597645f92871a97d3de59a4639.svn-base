@@ -1,0 +1,65 @@
+<?php $__env->startSection('title'); ?>
+
+    
+    <?php echo e(trans('general.buildings')); ?>
+
+    ##parent-placeholder-3c6de1b7dd91465d437ef415f94f36afc1fbc8a8##
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('header_right'); ?>
+    <a href="<?php echo e(route('buildings.edit', ['buildings' => $buildings->id])); ?>" class="btn btn-sm btn-primary pull-right"><?php echo e(trans('admin/buildings/table.update')); ?> </a>
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('content'); ?>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table table-responsive">
+
+                                <table
+                                        data-columns="<?php echo e(\App\Presenters\BuildingsPresenter::dataTableLayout()); ?>"
+                                        data-cookie-id-table="buildingsTable"
+                                        data-pagination="true"
+                                        data-id-table="buildingsTable"
+                                        data-search="true"
+                                        data-show-footer="true"
+                                        data-side-pagination="server"
+                                        data-show-columns="true"
+                                        data-show-export="true"
+                                        data-show-refresh="true"
+                                        data-sort-order="asc"
+                                        id="buildingsTable"
+                                        class="table table-striped snipe-table"
+                                        data-url="<?php echo e(route('api.buildings.index',['buildings_id'=> $buildings->id])); ?>"
+                                        data-export-options='{
+                              "fileName": "export-buildings-<?php echo e(str_slug($buildings->name)); ?>-<?php echo e(date('Y-m-d')); ?>",
+                              "ignoreColumn": ["actions","image","change","checkbox","checkincheckout","icon"]
+                              }'>
+
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('moar_scripts'); ?>
+    <?php echo $__env->make('partials.bootstrap-table',
+    ['exportFile' => 'buildings-users-export',
+    'search' => true,
+    'columns' => \App\Presenters\BuildingsPresenter::dataTableLayout()
+], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts/default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
